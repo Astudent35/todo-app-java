@@ -1,0 +1,53 @@
+@HOST = http://localhost:8080
+@TOKEN = eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb2UiLCJpYXQiOjE3NDQ1NTU4NDUsImV4cCI6MTc0NDU1OTQ0NX0.jrXuC2sSUWFeKuo9lviodrusiD7v11D5R01Mm1R1dXQ
+### Register a new user
+POST {{HOST}}/api/users/register
+Content-Type: application/json
+
+{
+  "username": "doe",
+  "email": "doe@example.com"
+}
+
+### Login
+POST {{HOST}}/api/auth/login
+Content-Type: application/json
+
+{
+  "identifier": "doe@example.com",
+  "password": "secret"
+}
+
+
+### Get all todos
+GET {{HOST}}/api/todos
+Authorization: Bearer {{TOKEN}}
+Accept: application/json
+
+### Create a new todo
+POST {{HOST}}/api/todos
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "title": "Learn Spring Boo - 3",
+  "description": "Follow tutorial on Spring Boot REST APIs", 
+  "done": false
+}
+
+### Update a todo
+PUT {{HOST}}/api/todos/3
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "title": "Learn Spring Boot",
+  "description": "Complete Spring Boot REST API tutorial",
+  "done": "truenfalse"
+}
+
+### Delete a todo
+DELETE {{HOST}}/api/todos/1
+Authorization: Bearer {{TOKEN}}
+
+
